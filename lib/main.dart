@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
+        accentColor: Colors.deepPurpleAccent,
         brightness: Brightness.light,
-
       ),
       home: MyHomePage(title: 'Netigma Fusion'),
     );
@@ -42,25 +42,8 @@ class _MyHomePageState extends State<MyHomePage> with NetigmaBaseMixin<MyHomePag
 
   @override
   Widget body() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            'You have pushed the button this many times:',
-          ),
-          Text(
-            '$_counter',
-            style: Theme.of(context).textTheme.display1,
-          ),
-          RaisedButton(child:Text("don't press !"), onPressed:(){
-            setState(() {
-              _counter++;
-            });
-          },)
-        ],
-      ),
-    );
+return Container();
+
 
   }
 }

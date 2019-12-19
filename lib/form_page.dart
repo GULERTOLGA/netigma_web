@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:netigma_web/main_drawer.dart';
 
+import 'localisable_mixin.dart';
+
 class FormPage extends StatefulWidget {
   @override
   _FormPageState createState() => _FormPageState();
 }
 
-class _FormPageState extends State<FormPage> {
+class _FormPageState extends State<FormPage> with  NetigmaBaseMixin<FormPage>  {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: MainDrawer(),
-      appBar: AppBar(
-        title: Text("Form Page"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Form page content',
-            ),
+  void initState() {
+    super.initState();
+  }
 
-          ],
-        ),
-      ),
-      // This trailing comma makes auto-formatting nicer for build methods.
-    );
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+
+
+  @override
+  Widget body() {
+    // TODO: implement body
+    return Container(child: Center(child: Text("Form page"),),);
   }
 }
