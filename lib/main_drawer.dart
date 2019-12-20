@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netigma_web/form_page.dart';
-import 'package:netigma_web/query_page.dart';
+import 'package:netigma_web/Pages/form_page.dart';
+import 'package:netigma_web/Pages/query_page.dart';
 
 class MainDrawer extends StatefulWidget {
   @override
@@ -20,30 +20,28 @@ class _MainDrawerState extends State<MainDrawer> {
               child: Text('Drawer Header', style: TextStyle(color: Colors.white),),
               decoration: BoxDecoration(
                 color: Theme.of(context).accentColor,
-              ),
+              )
             ),
-            Hero(
-              tag: "aaa",
-              child: ListTile(
+        ListTile(
                 title: Text('Query Page'),
                 onTap: () {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(
                     new CupertinoPageRoute<bool>(
-
+                      fullscreenDialog: true,
                       builder: (BuildContext context) => QueryPage(),
                     ),
                   );
                 },
-              ),
-            ),
+        ),
+
             ListTile(
               title: Text('Form Page'),
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(
                   new CupertinoPageRoute<bool>(
-
+                    fullscreenDialog: true,
                     builder: (BuildContext context) => FormPage(),
                   ),
                 );
