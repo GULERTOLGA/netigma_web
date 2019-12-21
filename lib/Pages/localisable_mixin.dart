@@ -22,7 +22,7 @@ mixin NetigmaBaseMixin<T extends StatefulWidget> on State<T> {
     // TODO: implement setState
     super.initState();
     _isLogin =
-        true; // ApplicationSettings.sessionID != null && ApplicationSettings.sessionID.isNotEmpty;
+        ApplicationSettings.sessionID != null && ApplicationSettings.sessionID.isNotEmpty;
   }
 
   @override
@@ -98,6 +98,22 @@ mixin NetigmaBaseMixin<T extends StatefulWidget> on State<T> {
                                 builder: (BuildContext context) => ChrPage(),
                               ),
                             );
+                          },
+                        ),
+
+                        ListTile(
+                          leading: Icon(Icons.notification_important),
+                          title: Text('Notifications'),
+                          onTap: () {
+
+                          },
+                        ),
+
+                        ListTile(
+                          leading: Icon(Icons.contact_mail),
+                          title: Text('Contacts'),
+                          onTap: () {
+
                           },
                         ),
                       ],
