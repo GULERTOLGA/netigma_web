@@ -7,8 +7,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../statics.dart';
 
-import '../statics.dart';
-
 typedef SuccessfulLogin<T> = void Function(T value);
 
 class LoginPage extends StatefulWidget {
@@ -239,10 +237,7 @@ class _LoginPageState extends State<LoginPage> {
 
                         onPressed: () {
                           validateAndSubmit(context);
-                          setState(() {
-                            _loginProcess = !_loginProcess;
 
-                          });
                         },
                         child: Container(
                           width: 150,
