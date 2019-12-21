@@ -19,6 +19,7 @@ environment:
 dependencies:
   http:
   charts_flutter: ^0.8.1
+  flutter_inner_drawer: ^0.5.4
   flutter:
     sdk: flutter
 

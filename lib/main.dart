@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netigma_web/Pages/chart_page.dart';
 
 
 
@@ -22,14 +23,14 @@ AuthProvider( child:MaterialApp(
       title: 'Flutter Web',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        brightness: Brightness.dark,
-        primaryColor: Colors.blue[800],
+        brightness: Brightness.light,
+        primaryColor: Colors.green[800],
         primaryColorDark: Colors.blue,
         primaryColorLight: Colors.blue[400],
         accentColor: Colors.blue[600],
         unselectedWidgetColor: Colors.white10,
         toggleableActiveColor: Colors.blue[700],
-        hintColor: Colors.white10,
+        hintColor: Colors.grey,
         disabledColor: Colors.white10,
         cursorColor:Colors.blue[900],
         // Define the default font family.
@@ -44,7 +45,7 @@ AuthProvider( child:MaterialApp(
         ),
 
       ),
-      home: MyHomePage(title: 'Netigma Fusion'),
+      home: ChrPage(),
     ));
 
 

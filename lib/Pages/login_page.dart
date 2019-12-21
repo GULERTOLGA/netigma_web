@@ -224,7 +224,7 @@ class _LoginPageState extends State<LoginPage> {
                         prefixIcon: Hero(
                             tag: "selectcompany222",
                             child: Icon(
-                              Icons.person,
+                              Icons.lock,
                               color: Theme.of(context).backgroundColor,
                             )),
                       ),

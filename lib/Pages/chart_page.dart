@@ -8,63 +8,84 @@ import 'localisable_mixin.dart';
 class ChrPage extends StatefulWidget {
   @override
   _ChrPageState createState() => _ChrPageState();
-  static List<charts.Series<OrdinalSales, String>> _createRandomData() {
-    final random = new Random();
-
-    final desktopSalesData = [
-      new OrdinalSales('2014', random.nextInt(100)),
-      new OrdinalSales('2015', random.nextInt(100)),
-      new OrdinalSales('2016', random.nextInt(100)),
-      new OrdinalSales('2017', random.nextInt(100)),
+  /// Create series list with multiple series
+  static List<charts.Series<OrdinalSales, String>> _createSampleData() {
+    final q1 = [
+      new OrdinalSales('2016', 20),
+      new OrdinalSales('2017', 25),
+      new OrdinalSales('2018', 30),
+      new OrdinalSales('2019', 35),
     ];
 
-    final tableSalesData = [
-      new OrdinalSales('2014', random.nextInt(100)),
-      new OrdinalSales('2015', random.nextInt(100)),
-      new OrdinalSales('2016', random.nextInt(100)),
-      new OrdinalSales('2017', random.nextInt(100)),
+    final q2 = [
+      new OrdinalSales('2016', 15),
+      new OrdinalSales('2017', 50),
+      new OrdinalSales('2018', 10),
+      new OrdinalSales('2019', 20),
     ];
 
-    final mobileSalesData = [
-      new OrdinalSales('2014', random.nextInt(100)),
-      new OrdinalSales('2015', random.nextInt(100)),
-      new OrdinalSales('2016', random.nextInt(100)),
-      new OrdinalSales('2017', random.nextInt(100)),
+    final q3 = [
+      new OrdinalSales('2016', 25),
+      new OrdinalSales('2017', 15),
+      new OrdinalSales('2018', 20),
+      new OrdinalSales('2019', 35),
+    ];
+
+    final q4 = [
+      new OrdinalSales('2016', 25),
+      new OrdinalSales('2017', 15),
+      new OrdinalSales('2018', 50),
+      new OrdinalSales('2019', 25),
     ];
 
     final targetLineData = [
-      new OrdinalSales('2014', random.nextInt(100)),
-      new OrdinalSales('2015', random.nextInt(100)),
-      new OrdinalSales('2016', random.nextInt(100)),
-      new OrdinalSales('2017', random.nextInt(100)),
+      new OrdinalSales('2016', 96),
+      new OrdinalSales('2017', 80),
+      new OrdinalSales('2018', 90),
+      new OrdinalSales('2019', 100),
     ];
 
     return [
       new charts.Series<OrdinalSales, String>(
-          id: 'Desktop',
+          id: 'Q4',
           domainFn: (OrdinalSales sales, _) => sales.year,
           measureFn: (OrdinalSales sales, _) => sales.sales,
-          data: desktopSalesData),
+          labelAccessorFn: (OrdinalSales sales, _) =>
+          'Q4: ${sales.sales.toString()} m.',
+          data: q4),
       new charts.Series<OrdinalSales, String>(
-          id: 'Tablet',
+          id: 'Q3',
           domainFn: (OrdinalSales sales, _) => sales.year,
           measureFn: (OrdinalSales sales, _) => sales.sales,
-          data: tableSalesData),
+          labelAccessorFn: (OrdinalSales sales, _) =>
+          'Q3: ${sales.sales.toString()} m.',
+          data: q3),
       new charts.Series<OrdinalSales, String>(
-          id: 'Mobile',
+          id: 'Q2',
           domainFn: (OrdinalSales sales, _) => sales.year,
           measureFn: (OrdinalSales sales, _) => sales.sales,
-          data: mobileSalesData),
+          colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
+          labelAccessorFn: (OrdinalSales sales, _) =>
+          'Q2: ${sales.sales.toString()} m.',
+          data: q2),
       new charts.Series<OrdinalSales, String>(
-          id: 'Desktop Target Line',
+          id: 'Q1',
           domainFn: (OrdinalSales sales, _) => sales.year,
           measureFn: (OrdinalSales sales, _) => sales.sales,
+          colorFn: (_, __) => charts.MaterialPalette.gray.shadeDefault,
+          labelAccessorFn: (OrdinalSales sales, _) =>
+          'Q1: ${sales.sales.toString()} m.',
+          data: q1),
+      new charts.Series<OrdinalSales, String>(
+          id: ' Q4',
+          domainFn: (OrdinalSales sales, _) => sales.year,
+          measureFn: (OrdinalSales sales, _) => sales.sales,
+          colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
           data: targetLineData)
       // Configure our custom bar target renderer for this series.
         ..setAttribute(charts.rendererIdKey, 'customTargetLine'),
     ];
   }
-
 
 }
 
@@ -73,7 +94,13 @@ class _ChrPageState extends State<ChrPage> with NetigmaBaseMixin<ChrPage> {
   @override
   Widget body() {
     var w  = MediaQuery.of(context).size.width;
-    return   Container( width: w, height: 400, child:GroupedBarSingleTargetLineChart(ChrPage._createRandomData()));
+    return   Column(
+      children: <Widget>[
+        Container(width: w, height: 400, child:GroupedBarSingleTargetLineChart(ChrPage._createSampleData())),
+        SizedBox(height: 50),
+        Text("The expected total sales target is indicated by a red line.")
+      ],
+    );
 
   }
 
@@ -82,6 +109,6 @@ class _ChrPageState extends State<ChrPage> with NetigmaBaseMixin<ChrPage> {
   @override
   String getTitle() {
     // TODO: implement getTitle
-    return "Targets KPI ";
+    return "Targets By Year KPI ";
   }
 }

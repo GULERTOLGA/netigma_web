@@ -20,16 +20,16 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class GroupedBarSingleTargetLineChart extends StatelessWidget {
+class BarSingleTargetLineChart extends StatelessWidget {
   final List<charts.Series> seriesList;
   final bool animate;
 
-  GroupedBarSingleTargetLineChart(this.seriesList, {this.animate});
+  BarSingleTargetLineChart(this.seriesList, {this.animate});
   @override
   Widget build(BuildContext context) {
     return new charts.BarChart(seriesList,
         animate: animate,
-        barGroupingType: charts.BarGroupingType.groupedStacked,
+        barGroupingType: charts.BarGroupingType.grouped,
 
         barRendererDecorator: new charts.BarLabelDecorator<String>(),
         // Hide domain axis.
@@ -38,17 +38,10 @@ class GroupedBarSingleTargetLineChart extends StatelessWidget {
           new charts.BarTargetLineRendererConfig(            // ID used to link series to this renderer.
 
               customRendererId: 'customTargetLine',
-              groupingType: charts.BarGroupingType.stacked)
+              groupingType: charts.BarGroupingType.grouped)
         ]);
   }
 
 
 }
 
-/// Sample ordinal data type.
-class OrdinalSales {
-  final String year;
-  final int sales;
-
-  OrdinalSales(this.year, this.sales);
-}
